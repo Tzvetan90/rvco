@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jul 12 12:57:51 2015
+
+@author: Stefano
+"""
+
+from Bio.Seq import Seq
+from Bio.Alphabet import IUPAC
+count=0
+with open('rosalind_rvco.txt','r') as inp:
+        line=inp.read().split('\n')
+        prova=range(0,len(line)-2,3)
+        for i in prova:
+            if line[i+1].strip()+line[i+2].strip()==Seq(line[i+1].strip()+line[i+2].strip(),IUPAC.unambiguous_dna).reverse_complement():
+                count+=1
+with open('ouputrvco.txt','w') as out:
+    out.write(str(count))
